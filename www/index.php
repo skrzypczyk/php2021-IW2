@@ -1,5 +1,17 @@
 <?php
 
+namespace App;
+
+function myAutoloader($class){
+    //$class = CleanWords
+    if(file_exists("Core/".$class.".class.php")){
+        include "Core/".$class.".class.php";
+    }
+}
+
+spl_autoload_register("App\myAutoloader");
+
+
 $uri = $_SERVER["REQUEST_URI"];
 
 $routeFile = "routes.yml";
@@ -20,7 +32,7 @@ $action = strtolower($routes[$uri]["action"]);
 // $controller = User ou $controller = Global
 // $action = login ou $action = logout ou $action = home
 
-$controllerFile = "controllers/".$controller.".class.php";
+$controllerFile = "Controller/".$controller.".class.php";
 if(!file_exists($controllerFile)){
     die("Le controller ".$controllerFile." n'existe pas");
 }
