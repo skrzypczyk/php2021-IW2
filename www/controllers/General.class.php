@@ -1,9 +1,11 @@
 <?php
 
-class Global{
+class General{
 
     public function home()
     {
         echo "Welcome";
     }
 }
+
+

@@ -1,5 +1,5 @@
 /:
-  controller: global
+  controller: general
   action: home
 
 /login:
@@ -9,3 +9,7 @@
 /logout:
   controller: user
   action: logout
+
+/register:
+  controller: user
+  action: register

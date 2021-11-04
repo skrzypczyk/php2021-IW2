@@ -12,4 +12,9 @@ class User{
         echo "Se deco";
     }
 
+    public function register()
+    {
+        echo "S'inscrire";
+    }
+
 }
