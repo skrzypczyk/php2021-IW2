@@ -1,11 +1,17 @@
 <?php
-
 namespace App;
 
+
+
+
 function myAutoloader($class){
-    //$class = CleanWords
-    if(file_exists("Core/".$class.".class.php")){
-        include "Core/".$class.".class.php";
+    //$class = App\Core\CleanWords
+    $class = str_ireplace("App\\", "", $class);
+    //$class = Core\CleanWords
+    $class = str_ireplace("\\", "/", $class);
+    //$class = Core/CleanWords
+    if(file_exists($class.".class.php")){
+        include $class.".class.php";
     }
 }
 
@@ -38,9 +44,11 @@ if(!file_exists($controllerFile)){
 }
 include $controllerFile;
 
+$controller = "App\\Controller\\".$controller;
 if( !class_exists($controller) ){
    die("La classe ".$controller." n'existe pas");
 }
+
 $objectController = new $controller();
 
 if( !method_exists($objectController, $action) ){
@@ -48,3 +56,7 @@ if( !method_exists($objectController, $action) ){
 }
 
 $objectController->$action();
+
+
+
+

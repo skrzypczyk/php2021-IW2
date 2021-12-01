@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Core\CleanWords as Clean;
+
 class User{
 
     public function login()
@@ -20,7 +22,7 @@ class User{
         //On recoit de la part de l'internaute son nom
 
         $lastname = " SKryPCzyk   ";
-        $lastname = cleanWords::lastname($lastname);
+        $lastname = Clean::lastname($lastname);
         echo $lastname;
 
         echo "S'inscrire";
