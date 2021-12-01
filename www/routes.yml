@@ -2,6 +2,10 @@
   controller: general
   action: home
 
+/me-contacter:
+  controller: general
+  action: contact
+
 /login:
   controller: user
   action: login
@@ -13,3 +17,8 @@
 /register:
   controller: user
   action: register
+
+
+/dashboard:
+  controller: admin
+  action: dashboard

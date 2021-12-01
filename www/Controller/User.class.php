@@ -10,6 +10,7 @@ class User{
     public function login()
     {
         $view = new View("Login");
+        $view->assign("titleSeo","Se connecter au site");
     }
 
     public function logout()

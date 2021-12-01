@@ -5,14 +5,26 @@ namespace App\Core;
 class View
 {
     private $view;
+    private $template;
+    private $data = [];
 
-    public function __construct($view)
+    public function __construct($view, $template = "front")
     {
         $this->setView($view);
+        $this->setTemplate($template);
     }
 
     public function setView($view){
         $this->view = strtolower($view);
+    }
+
+    public function setTemplate($template){
+        $this->template = strtolower($template);
+    }
+
+    public function assign($key, $value):void
+    {
+        $this->data[$key] = $value;
     }
 
     public function __toString():string
@@ -23,7 +35,9 @@ class View
 
     public function __destruct()
     {
-        include "View/".$this->view.".view.php";
+        //Array ( [firstname] => Yves )
+        extract($this->data);
+        include "View/".$this->template.".tpl.php";
     }
 
 }
