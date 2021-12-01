@@ -3,12 +3,13 @@
 namespace App\Controller;
 
 use App\Core\CleanWords as Clean;
+use App\Core\View;
 
 class User{
 
     public function login()
     {
-        echo "S'inscrire";
+        $view = new View("Login");
     }
 
     public function logout()
@@ -18,14 +19,7 @@ class User{
 
     public function register()
     {
-        //On part du principe que l'on a un formulaire d'inscription
-        //On recoit de la part de l'internaute son nom
-
-        $lastname = " SKryPCzyk   ";
-        $lastname = Clean::lastname($lastname);
-        echo $lastname;
-
-        echo "S'inscrire";
+        $view = new View("register");
     }
 
 }
