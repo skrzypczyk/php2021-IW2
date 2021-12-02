@@ -3,10 +3,11 @@
 namespace App\Core;
 
 
-class BaseSQL
+abstract class BaseSQL
 {
     private $pdo;
     private $table;
+
 
     public function __construct()
     {
@@ -14,6 +15,7 @@ class BaseSQL
         try{
             //Connexion à la base de données
             $this->pdo = new \PDO( DBDRIVER.":host=".DBHOST.";port=".DBPORT.";dbname=".DBNAME ,DBUSER , DBPWD );
+            $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         }catch(\Exception $e){
             die("Erreur SQL".$e->getMessage());
         }
@@ -34,6 +36,10 @@ class BaseSQL
 
 
        if( !is_null($this->getId()) ){
+           foreach ($columns as $key=>$value){
+                $setUpdate[]=$key."=:".$key;
+           }
+           $sql = "UPDATE ".$this->table." SET ".implode(",",$setUpdate)." WHERE id=".$this->getId();
 
        }else{
             $sql = "INSERT INTO ".$this->table." (".implode(",", array_keys($columns)).")

@@ -6,7 +6,7 @@ use App\Core\BaseSQL;
 class User extends BaseSQL
 {
 
-    protected $id = null;
+    private $id = null;
     protected $email;
     protected $password;
     protected $firstname;
@@ -18,8 +18,6 @@ class User extends BaseSQL
     {
         parent::__construct();
     }
-
-
     /**
      * @return mixed
      */
