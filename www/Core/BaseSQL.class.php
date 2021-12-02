@@ -26,8 +26,25 @@ class BaseSQL
 
     protected function save()
     {
-        "INSERT INTO ".$this->table." (firstname,lastname,email, password)
-        VALUES (:firstname, :lastname,:email, :password)";
+
+        $columns  = get_object_vars($this);
+        $varsToExclude = get_class_vars(get_class());
+        $columns = array_diff_key($columns, $varsToExclude);
+        $columns = array_filter($columns);
+
+
+       if( !is_null($this->getId()) ){
+
+       }else{
+            $sql = "INSERT INTO ".$this->table." (".implode(",", array_keys($columns)).")
+            VALUES (:".implode(",:", array_keys($columns)).")";
+       }
+
+        $queryPrepared = $this->pdo->prepare($sql);
+        $queryPrepared->execute( $columns );
+
+
+
     }
 
 }

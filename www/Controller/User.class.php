@@ -23,6 +23,7 @@ class User{
     {
 
         $user = new UserModel();
+        //$user->setId(1);
         $user->setEmail("y.SKRZYPczyk@gmail.COM    ");
         $user->setFirstname("YVes");
         $user->setLastname("skrzypczyk");

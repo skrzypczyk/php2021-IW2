@@ -6,13 +6,13 @@ use App\Core\BaseSQL;
 class User extends BaseSQL
 {
 
-    private $id = null;
-    private $email;
-    private $password;
-    private $firstname;
-    private $lastname;
-    private $status = null;
-    private $token = null;
+    protected $id = null;
+    protected $email;
+    protected $password;
+    protected $firstname;
+    protected $lastname;
+    protected $status = null;
+    protected $token = null;
 
     public function __construct()
     {
@@ -23,7 +23,7 @@ class User extends BaseSQL
     /**
      * @return mixed
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
