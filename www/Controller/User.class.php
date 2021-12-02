@@ -24,12 +24,10 @@ class User{
 
         $user = new UserModel();
         $user->setId(3);
-        $user->setEmail("y.SKRZYPczyk@gmail.COM    ");
-        $user->setFirstname("Toto");
-        $user->setLastname("skrzypczyk");
-        $user->setPassword("Test1234");
+        print_r($user);
 
-        $user->save();
+        //$user->setEmail("toto@gmail.com");
+        //$user->save();
 
         $view = new View("register");
     }
