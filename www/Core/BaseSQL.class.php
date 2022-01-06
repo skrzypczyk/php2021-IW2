@@ -26,6 +26,18 @@ abstract class BaseSQL
 
     }
 
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): object
+    {
+        $sql = "SELECT * FROM ".$this->table. " WHERE id=:id ";
+        $queryPrepared = $this->pdo->prepare($sql);
+        $queryPrepared->execute( ["id"=>$id] );
+        return $queryPrepared->fetchObject(get_called_class());
+    }
+
+
     protected function save()
     {
 
@@ -40,7 +52,6 @@ abstract class BaseSQL
                 $setUpdate[]=$key."=:".$key;
            }
            $sql = "UPDATE ".$this->table." SET ".implode(",",$setUpdate)." WHERE id=".$this->getId();
-
        }else{
             $sql = "INSERT INTO ".$this->table." (".implode(",", array_keys($columns)).")
             VALUES (:".implode(",:", array_keys($columns)).")";

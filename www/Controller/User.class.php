@@ -23,11 +23,10 @@ class User{
     {
 
         $user = new UserModel();
-        $user->setId(3);
-        print_r($user);
+        $user= $user->setId(3);
 
-        //$user->setEmail("toto@gmail.com");
-        //$user->save();
+        $user->setEmail("toto@gmail.com");
+        $user->save();
 
         $view = new View("register");
     }

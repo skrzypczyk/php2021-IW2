@@ -6,7 +6,7 @@ use App\Core\BaseSQL;
 class User extends BaseSQL
 {
 
-    private $id = null;
+    protected $id = null;
     protected $email;
     protected $password;
     protected $firstname;
@@ -26,13 +26,6 @@ class User extends BaseSQL
         return $this->id;
     }
 
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return mixed
