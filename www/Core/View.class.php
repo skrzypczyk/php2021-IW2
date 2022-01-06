@@ -27,6 +27,15 @@ class View
         $this->data[$key] = $value;
     }
 
+    public function includePartial($name, $config)
+    {
+        if(!file_exists("View/Partial/".$name.".partial.php"))
+        {
+            die("partial ".$name." 404");
+        }
+        include "View/Partial/".$name.".partial.php";
+    }
+
     public function __toString():string
     {
         return "Ceci est la classe View";
